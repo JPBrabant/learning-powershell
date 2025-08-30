@@ -55,8 +55,8 @@ Remove-Item -Path NewFile.txt
 # ALIAS #
 #########
 
-Get-Alias gci
-Get-Alias Get-ChildItem
+Get-Alias -Name gci
+Get-Alias -Definition Get-ChildItem
 
 
 #################
