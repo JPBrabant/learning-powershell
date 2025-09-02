@@ -143,9 +143,9 @@ Get-Module -ListAvailable
 $Env:PSModulePath -split ';'
 Find-Module -Filter DevOps
 
-#############
-# Data type #
-#############
+###########################
+# COLLECTION AND DATATYPE #
+###########################
 
 @(1,2,3) # Array
 @{Test = $true, $str = "String"} # Hash table
@@ -158,7 +158,7 @@ $var = [PSCustomObject]@{
 $megaByte = 50MB
 
 ############
-# Operator #
+# OPERATOR #
 ############
 
 -and
@@ -170,21 +170,20 @@ $megaByte = 50MB
 "1" -is [String]
 "1" -isnot [Int32]
 
+##################
+# ERROR HANDLING #
+##################
 
-# grep.
-Select-String
-
-# Accessing a property
-$process = Get-Process -Id $PID 
-$process.Name
-# or
-(Get-Process -Id $PID).Name
-
-# Try - catch
 try {
-    Invoke-WebRequest -UseBasicParsing -Uri "https://www.simons.ca/simons/json/ajaxStoreAvailabilityPopup.jsp?prdId=6955-209209&skuId=3943273&__=0.14130918214642296"
+    Invoke-WebRequest -UseBasicParsing -Uri "https://www.simons.ca/"
 }
 catch {
     Write-Output $_.Exception.Message
 }
 
+##########
+# OTHERS #
+##########
+
+# grep.
+Select-String
