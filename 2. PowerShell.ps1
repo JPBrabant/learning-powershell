@@ -143,7 +143,17 @@ Get-Module -ListAvailable
 $Env:PSModulePath -split ';'
 Find-Module -Filter DevOps
 
+#############
+# Data type #
+#############
 
+@(1,2,3) # Array
+@{Test = $true, $str = "String"} # Hash table
+
+$var = [PSCustomObject]@{
+    KeyName1 = "Value 1"
+    KeyName2 = "Value 2"
+}
 
 
 
