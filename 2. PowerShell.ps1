@@ -83,7 +83,35 @@ Write-Host -Object 'Test'
 Get-Process | Select-Object -First 10
 
 # Filtering.
-Get-Process | Where-Object WorkingSet -GT 50MB # LT, Is, EQ, Not, etc.
+Get-Process | Where-Object -Property PriorityClass -Value Normal -EQ # Long form
+Get-Process | Where-Object PriorityClass -EQ Normal                  # Short form
+Get-Process | where PriorityClass -EQ Normal                         # Shortest form
+Get-Process | Where-Object {$_.PriorityClass -eq "Normal"}           # Script block syntax
+
+-Match "^p.*" # Regular expression
+-NotMatch
+-Like "p.*" # wildcard characters : *, ?, [0-9], [abc]
+-NotLike
+
+-Contains "Svchost" # $array -contains $value
+-NotContains
+
+-In "Svchost", "TaskHost", "WsmProvHost" # $value -in $array (reverse syntax of contains)
+-NotIn
+
+-EQ # Equal
+-NE # Not equal
+
+-GE # greater than or equal 
+-GT # greater than 
+-LE # less than or equal 
+-LT # less than 
+
+-Is [datetime] # Indicates that this cmdlet gets objects if the property value is an instance of the specified .NET type. Ex.:
+-IsNot
+
+"Test" | Where-Object Length # gets objects if the property exist and has a value
+"Test" | Where-Object -Not Length # gets objects if the property doesn't exist or has a value of $null or $false.
 
 # Selecting column.
 Get-Process | Select-Object ID, Name
