@@ -155,6 +155,20 @@ $var = [PSCustomObject]@{
     KeyName2 = "Value 2"
 }
 
+$megaByte = 50MB
+
+############
+# Operator #
+############
+
+-and
+-or
+-not
+"Lastname:FirstName:Address" -split ":", 2, "SimpleMatch" # The separator, max number of instance and options (https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_split)
+-replace
+"1" -as [Int32]
+"1" -is [String]
+"1" -isnot [Int32]
 
 
 # grep.
