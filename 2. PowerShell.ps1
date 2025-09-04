@@ -148,10 +148,14 @@ Install-Module SqlServer
 @(1,2,3) # Array
 @{Test = $true, $str = "String"} # Hash table
 
+# Custom object multiline
 [PSCustomObject]@{
     KeyName1 = "Value 1"
     KeyName2 = "Value 2"
 }
+
+# Custom object one line
+[PSCustomObject]@{Name="CustomObject";Expand=@(1,2,3,4,5)}
 
 50MB # You can use MB, GB, KB, ...
 
