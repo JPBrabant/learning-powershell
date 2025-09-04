@@ -18,10 +18,10 @@ Update-Help
 Get-Command -Name *Csv*
 
 # Get help about Import-Csv command. 
-Get-Help Import-Csv
+Get-Help Import-Csv           # Syntaxe, Description
 Get-Help Import-Csv -Examples
-Get-Help Import-Csv -Full
-Get-Help Import-Csv -Detailed
+Get-Help Import-Csv -Full     # Syntaxe, Description, full Parameter info and Examples
+Get-Help Import-Csv -Detailed # Syntaxe, Description, partial Parameter info and Examples
 Get-Help Import-Csv -Parameter *
 
 # Can be used to see all members part of the selected object
@@ -32,6 +32,8 @@ Get-Process -Id $PID | Get-Member | Sort-Object -Property Name # Sort the output
 # Get all property name and value
 Get-Process | Select-Object -First 1 -Property *
 
+# If you are looking for a command about object but you forgot it's name
+*object # CTRL+TAB will show all command ending with object
 
 #######################
 # FILES AND DIRECTORY #
@@ -70,6 +72,10 @@ Import-Csv -Path .\insurance.csv | Select-Object -First 10 | Format-List
 # Writing.
 Write-Host -Object 'Test'
 
+Write-Verbose 'Test' # Only show up if the script is called with -Verbose
+
+'a' | Out-Null # Hide the output
+
 # Paging.
 # Should be like more but does not work.
 (Invoke-WebRequest -Uri https://google.com).RawContent | Out-Host -Paging
@@ -79,8 +85,12 @@ Write-Host -Object 'Test'
 # LINQ #
 ########
 
-# Top 10.
-Get-Process | Select-Object -First 10
+# Measure
+Get-Process | Measure-Object # Number of process
+Get-Process | Measure-Object -Word # Number of word in a string
+Get-Process | Measure-Object -Line # Number of line in a string
+Get-Process | Measure-Object -Character # Number of character in a string
+Get-Process | Measure-Object -Property Id -Minimum # Maximum, Sum, Average, ...
 
 # Filtering.
 Get-Process | Where-Object -Property PriorityClass -Value Normal -EQ # Long form
@@ -88,33 +98,18 @@ Get-Process | Where-Object PriorityClass -EQ Normal                  # Short for
 Get-Process | where PriorityClass -EQ Normal                         # Shortest form
 Get-Process | Where-Object {$_.PriorityClass -eq "Normal"}           # Script block syntax
 
--Match "^p.*" # Regular expression
--NotMatch
--Like "p.*" # wildcard characters : *, ?, [0-9], [abc]
--NotLike
+# Select
 
--Contains "Svchost" # $array -contains $value
--NotContains
+# Property
+Get-Process | Select-Object -Property Id # Return an array of PSCustomObject with 1 property Id (so it include a header row)
+Get-Process | Select-Object -ExpandProperty Id # Return an array of Int32, no object, no header row.
+Get-Process | Select-Object -ExpandProperty Modules # Can be used to expand an object to show it properties (return a System.Diagnostics.ProcessModule)
 
--In "Svchost", "TaskHost", "WsmProvHost" # $value -in $array (reverse syntax of contains)
--NotIn
-
--EQ # Equal
--NE # Not equal
-
--GE # greater than or equal 
--GT # greater than 
--LE # less than or equal 
--LT # less than 
-
--Is [datetime] # Indicates that this cmdlet gets objects if the property value is an instance of the specified .NET type. Ex.:
--IsNot
-
-"Test" | Where-Object Length # gets objects if the property exist and has a value
-"Test" | Where-Object -Not Length # gets objects if the property doesn't exist or has a value of $null or $false.
+# Top 10.
+Get-Process | Select-Object -First 10 # Last, Unique, Skip, Index
 
 # Selecting column.
-Get-Process | Select-Object ID, Name
+Get-Process | Select-Object -Property ID, Name
 
 # For-each with a {} script block. $_ name refer to the current iteration of Get-Process
 Get-Process | ForEach-Object -Process { Write-Host $_.Name  }
@@ -123,6 +118,7 @@ Get-Process | ForEach-Object -Process { Write-Host $_.Name  }
 1..5 | ForEach-Object -Begin {
     Write-Host "Starting the pipeline. Creating value."
     $value = 0
+    $value
 } -Process {
     Write-Host "Adding $_ to value."
     $value += $_
@@ -142,6 +138,8 @@ Get-Process -Id $PID | Get-Member | Sort-Object -Property Name
 Get-Module -ListAvailable
 $Env:PSModulePath -split ';'
 Find-Module -Filter DevOps
+Get-Module SqlServer -ListAvailable # Check if SqlServer module is installed
+Install-Module SqlServer
 
 ###########################
 # COLLECTION AND DATATYPE #
@@ -150,12 +148,12 @@ Find-Module -Filter DevOps
 @(1,2,3) # Array
 @{Test = $true, $str = "String"} # Hash table
 
-$var = [PSCustomObject]@{
+[PSCustomObject]@{
     KeyName1 = "Value 1"
     KeyName2 = "Value 2"
 }
 
-$megaByte = 50MB
+50MB # You can use MB, GB, KB, ...
 
 ############
 # OPERATOR #
@@ -187,3 +185,32 @@ catch {
 
 # grep.
 Select-String
+
+##################
+# WHERE OPERATOR #
+##################
+
+-Match "^p.*" # Regular expression
+-NotMatch
+-Like "p.*" # wildcard characters : *, ?, [0-9], [abc]
+-NotLike
+
+-Contains "Svchost" # $array -contains $value
+-NotContains
+
+-In "Svchost", "TaskHost", "WsmProvHost" # $value -in $array (reverse syntax of contains)
+-NotIn
+
+-EQ # Equal
+-NE # Not equal
+
+-GE # greater than or equal 
+-GT # greater than 
+-LE # less than or equal 
+-LT # less than 
+
+-Is [datetime] # Indicates that this cmdlet gets objects if the property value is an instance of the specified .NET type. Ex.:
+-IsNot
+
+"Test" | Where-Object Length      # gets objects if the property exist and has a value
+"Test" | Where-Object -Not Length # gets objects if the property doesn't exist or has a value of $null or $false.
