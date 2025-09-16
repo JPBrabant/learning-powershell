@@ -70,7 +70,7 @@ Get-Alias -Definition Get-ChildItem
 #################
 
 # Format.
-Import-Csv -Path .\insurance.csv | Select-Object -First 10 | Format-Table
+Import-Csv -Path .\insurance.csv | Select-Object -First 10 | Format-Table -AutoSize
 Import-Csv -Path .\insurance.csv | Select-Object -First 10 | Format-List
 
 # Writing.
