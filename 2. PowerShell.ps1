@@ -38,6 +38,7 @@ Get-Process | Select-Object -First 1 -Property *
 # Figuring out the type of an object (don't forget most command return an array of object)
 (ps)[0].GetType().FullName
 
+
 #######################
 # FILES AND DIRECTORY #
 #######################
@@ -83,6 +84,7 @@ Write-Verbose 'Test' # Only show up if the script is called with -Verbose
 # Should be like more but does not work.
 (Invoke-WebRequest -Uri https://google.com).RawContent | Out-Host -Paging
 (Invoke-WebRequest -Uri https://google.com).RawContent | more
+
 
 ########
 # LINQ #
@@ -147,6 +149,7 @@ Find-Module -Filter DevOps
 Get-Module SqlServer -ListAvailable # Check if SqlServer module is installed
 Install-Module SqlServer
 
+
 ###########################
 # COLLECTION AND DATATYPE #
 ###########################
@@ -183,6 +186,7 @@ Text
 
 50MB # You can use MB, GB, KB, ...
 
+
 ##########
 # STRING #
 ##########
@@ -198,6 +202,7 @@ $_.Name -replace '\.txt$','.log'
 # Clipboard
 Get-Content 'test.txt' | Set-Clipboard
 Get-Clipboard
+
 
 ########
 # DATE #
@@ -305,6 +310,7 @@ $val = $valueA ?? 'Default value' # If valueA is not null, assign valueA, if nul
 # Chain operator
 program1.exe && program2.exe # Only run program 2 if program 1 did not fail (throw Exception).
 
+
 ###############
 # FILE SYSTEM #
 ###############
@@ -324,6 +330,7 @@ Set-Location # "Set-Location -" and "Set-Location +" allow you to go backward or
 Invoke-Item # Open .txt file with Notepad for example
 Get-FileHash -Algorithm SHA1 -Path .
 
+
 ##################
 # ERROR HANDLING #
 ##################
@@ -334,6 +341,7 @@ try {
 catch {
     Write-Output $_.Exception.Message
 }
+
 
 ##################
 # WHERE OPERATOR #
@@ -364,6 +372,7 @@ catch {
 "Test" | Where-Object Length      # gets objects if the property exist and has a value
 "Test" | Where-Object -Not Length # gets objects if the property doesn't exist or has a value of $null or $false.
 
+
 ###############
 # WEB REQUEST #
 ###############
@@ -375,6 +384,7 @@ Invoke-WebRequest -Uri "https://evenko.ca/fr/salles/place-bell"
 
 # Best at dealing with JSON or XML.
 Invoke-RestMethod 
+
 
 ####################
 # SPECIAL VARIABLE #
@@ -390,6 +400,7 @@ Set-Location C:\progra~1 # 64 bits
 Set-Location C:\progra~2 # 32 bits
 Set-Location C:\progra~3 # C:\ProgramData
 
+
 #######
 # JOB #
 #######
@@ -397,6 +408,7 @@ Set-Location C:\progra~3 # C:\ProgramData
 Start-Job -Name TestJob -ScriptBlock { Start-Sleep -Seconds 10 }
 Get-Job -Name TestJob | Receive-Job -Wait
 1..10 | ForEach-Object -Parallel { Write-Host $_ }
+
 
 ###########
 # PROCESS #
@@ -406,6 +418,7 @@ Get-Job -Name TestJob | Receive-Job -Wait
 # Alias : start
 Start-Process C:\Git # File explorer
 start test.txt # Notepad
+
 
 ############
 # FUNCTION #
@@ -420,3 +433,9 @@ function New-Function {
 
 }
 
+##################
+# USEFULL SCRIPT #
+##################
+
+# List all command for the Winget module.
+Get-Command -Module Microsoft.WinGet.Client | Where-Object CommandType -eq Cmdlet | Sort-Object Name
