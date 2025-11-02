@@ -136,7 +136,7 @@ Get-Process | Measure-Object -Property Id -Minimum # Maximum, Sum, Average, ...
 # Measure the time it take to run a command. Piping to out-host allow you to see the result of the command.
 Measure-Command -Expression { Get-ChildItem -Recurse C:\Git | Out-Host } 
 
-# Filtering.
+# Filtering (aliases where and "?").
 Get-Process | Where-Object -Property PriorityClass -Value Normal -EQ # Long form
 Get-Process | Where-Object PriorityClass -EQ Normal                  # Short form
 Get-Process | where PriorityClass -EQ Normal                         # Shortest form
