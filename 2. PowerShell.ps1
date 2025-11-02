@@ -43,19 +43,45 @@ Get-Process | Select-Object -First 1 -Property *
 # FILES AND DIRECTORY #
 #######################
 
-# ls.
+# ls. gci
 Get-ChildItem -Path 'C:\Git\Learning PowerShell\'
 Get-ChildItem -Recurse -Path 'C:\Git\'
 
-# See the content of a file.
+# See the content of a file. gc
 Get-Content -Path 'C:\Git\Learning PowerShell\Test1.ps1'
 
-# Create a file or directory
+# Create a file or directory. ni
 New-Item -ItemType File -Path NewFile.txt
 New-Item -ItemType Directory -Path TestFolder
 
+# ri
 Remove-Item -Path NewFile.txt
 
+# cp
+Copy-Item
+
+# Open file or folder. start
+Invoke-Item
+
+# echo
+Write-Output
+
+# Returns the specified part of a path
+# -Qualifier        : The drive C:
+# -Leaf             : The file name
+# -Leaf -Resolve    : If you use *.txt, resolve will find all the files matching
+# -Leafbase         : The file name without the extension
+# -Extension        : Only the file extension
+# -Parent           : The folder (relative)
+# -Parent -Resolve  : The folder (absolute)
+# The default is -Path [path] -Parent
+Split-Path $PROFILE
+
+# sl
+Set-Location
+
+# gl
+Get-Location
 
 #########
 # ALIAS #
@@ -75,6 +101,16 @@ Import-Csv -Path .\insurance.csv | Select-Object -First 10 | Format-List
 
 # Writing.
 Write-Host -Object 'Test'
+
+# Writing variable
+Write-Host "$test"
+
+# F string for object properties
+Write-Host ("{0} | {1}" -f $test.var1, $test.var2)
+
+# Writing with color
+Write-Host -ForegroundColor Red
+
 
 Write-Verbose 'Test' # Only show up if the script is called with -Verbose
 
@@ -139,6 +175,17 @@ Get-Process | ForEach-Object -Process { Write-Host $_.Name  }
 Get-Process -Id $PID | Get-Member | Sort-Object -Property Name
 
 
+##########################
+# CALLING OTHERS SCRIPTS #
+##########################
+
+# The "." dot sourcing operator will send AND receive variables from other scripts you have called. 
+. $PROFILE
+
+# The "&" call operator will ONLY send variables.
+$ .\script.ps1
+
+
 ##################
 # MODULE (ADDON) #
 ##################
@@ -164,11 +211,14 @@ $array = @( # No comma
 ) # Array
 
 $hashTable = @{}
-$hasTable = @{Test = $true, $str = "String"} # Hash table
-$hasTable = @{ # No comma
+$hashTable = @{Test = $true, $str = "String"} # Hash table
+$hashTable = @{ # No comma
     KeyName1 = "Value 1"
     KeyName2 = "Value 2"
 }
+
+# Can be used as parameter for function with the splatting operator @
+Connect-PSSession @hashTable
 
 # Custom object multiline
 [PSCustomObject]@{
@@ -399,6 +449,7 @@ Set-Location $env:USERPROFILE
 Set-Location C:\progra~1 # 64 bits
 Set-Location C:\progra~2 # 32 bits
 Set-Location C:\progra~3 # C:\ProgramData
+Set-Location $env:ProgramFiles # 64 bits
 
 
 #######
@@ -409,6 +460,9 @@ Start-Job -Name TestJob -ScriptBlock { Start-Sleep -Seconds 10 }
 Get-Job -Name TestJob | Receive-Job -Wait
 1..10 | ForEach-Object -Parallel { Write-Host $_ }
 
+# Start-ThreadJob seem to really start a new background thread, 
+# it's a lot more efficient. There is something weird with Start-Job.
+Start-ThreadJob -Name -ScriptBlock { Start-Sleep -Seconds 10 }
 
 ###########
 # PROCESS #
@@ -434,8 +488,17 @@ function New-Function {
 }
 
 ##################
-# USEFULL SCRIPT #
+# USEFULL SCRIPT / SNIPPETS #
 ##################
 
 # List all command for the Winget module.
 Get-Command -Module Microsoft.WinGet.Client | Where-Object CommandType -eq Cmdlet | Sort-Object Name
+
+
+############
+# PC ADMIN #
+############
+
+Get-Process
+Get-Service
+Get-ScheduledTask
