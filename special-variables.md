@@ -49,7 +49,7 @@ Get-Help about_Environment_Variables
 
 - `[Environment]::GetFolderPath('Desktop')`                 — Desktop
 - `[Environment]::GetFolderPath('MyDocuments')`             — Documents folder
-- `[Environment]::GetFolderPath('ApplicationData')`        — AppData\Roaming
+- `[Environment]::GetFolderPath('ApplicationData')`         — AppData\Roaming
 - `[Environment]::GetFolderPath('LocalApplicationData')`    — AppData\Local
 - `[Environment]::GetFolderPath('ProgramFiles')`            — Program Files
 - `[Environment]::GetFolderPath('System')`                  — Windows\System32
