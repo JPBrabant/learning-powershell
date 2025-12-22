@@ -43,3 +43,16 @@ You can find out more with
 ```pwsh
 Get-Help about_Environment_Variables
 ```
+
+
+# Special Windows location (using .Net)
+
+- `[Environment]::GetFolderPath('Desktop')`                 — Desktop
+- `[Environment]::GetFolderPath('MyDocuments')`             — Documents folder
+- `[Environment]::GetFolderPath('ApplicationData')`        — AppData\Roaming
+- `[Environment]::GetFolderPath('LocalApplicationData')`    — AppData\Local
+- `[Environment]::GetFolderPath('ProgramFiles')`            — Program Files
+- `[Environment]::GetFolderPath('System')`                  — Windows\System32
+- `[Environment]::GetFolderPath('Windows')`                 — Windows directory
+- `[Environment]::GetFolderPath('StartMenu')`               — Start Menu
+- `[Environment]::GetFolderPath('Startup')`                 — Startup folder
