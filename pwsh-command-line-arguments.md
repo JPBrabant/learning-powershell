@@ -16,15 +16,17 @@ Suppress the PowerShell banner on startup (hides version info, update notificati
 
 ## `-ExecutionPolicy <executionPolicy>`
 
-Start by checking your current **execution policy** with `Get-ExecutionPolicy`.
+Start by checking your current **execution policy** with:
 
-Execution Policy | Description
------------------|-------------
-**Restricted**   | No scripts can run, not even signed ones, only interactive commands allowed
-**AllSigned**    | Only scripts signed by a trusted publisher can run, applies to both local and remote scripts
-**RemoteSigned** | Local scripts run without signature, downloaded scripts must be signed by a trusted publisher
-**Unrestricted** | All scripts can run, warns before running downloaded scripts
-**Bypass**       | Everything runs without restriction, no warnings, no prompts, no blocks
+```pwsh
+Get-ExecutionPolicy -List
+```
+
+- `Restricted`   — No scripts can run, not even signed ones, only interactive commands allowed
+- `AllSigned`    — Only scripts signed by a trusted publisher can run, applies to both local and remote scripts
+- `RemoteSigned` — Local scripts run without signature, downloaded scripts must be signed by a trusted publisher
+- `Unrestricted` — All scripts can run, warns before running downloaded scripts
+- `Bypass`       — Everything runs without restriction, no warnings, no prompts, no blocks
 
 Set a global execution policy:
 
