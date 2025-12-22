@@ -1,58 +1,36 @@
-# Shell
+# Terminal shortcut
 
-## Installing
+## Auto complete `TAB`
 
-Start by installing or update to the latest version of Windows Terminal and PowerShell (7.5). There is a Preview version of PowerShell but it does not allow you to lunch a script with the `pwsh` command so stick to the official release.
+## Menu complete `CTRL+SPACE`
 
-	winget install --exact --id Microsoft.WindowsTerminal
+## Accepts inline suggestion `Right Arrow`
 
-	winget install --exact --id Microsoft.PowerShell
+## Switch between InlineView and ListView for suggestion `F2`
 
-	winget install --exact --id Microsoft.Edit
-
-## Lunching a script
-
-After installing PowerShell, a new profile called PowerShell will appear in the Windows Terminal.
-
-You can also lunch script from cmd.exe with
-
-	pwsh -ExecutionPolicy Bypass -NoExit -NoLogo -File .\Main.ps1
-
-The direct path to pwsh is `C:\Program Files\PowerShell\7\pwsh.exe`
-
-## Usefull Terminal shortcut
-
-### Auto complete `TAB`
-
-### Menu complete `CTRL+SPACE`
-
-### Accepts inline suggestion `Right Arrow`
-
-### Switch between InlineView and ListView for suggestion `F2`
-
-### Show command Help `F1`
+## Show command Help `F1`
 Placing the cursor at the end of a full command name will open the Full Help page in a different buffer.
 
-### Focused parameter help `ALT+H`
+## Focused parameter help `ALT+H`
 Placing the cursor at the end of a parameter, this command will show you help about this parameter. 
 
-### Selecting arguments value `ALT+A`
+## Selecting arguments value `ALT+A`
 Move the cursor to the next value of a parameter. 
 
-### Full screen `ALT+ENTER`
+## Full screen `ALT+ENTER`
 
-### Command palete `CTRL+SHIFT+P`
+## Command palete `CTRL+SHIFT+P`
 
-### Duplicate pane `ALT+SHIFT+D`
+## Duplicate pane `ALT+SHIFT+D`
 Open a new pane with the current profile (pwsh) on the right.
 
-### Close pane `CTRL+SHIT+W`
+## Close pane `CTRL+SHIT+W`
 
-### Switch between pane `ALT+ARROW`
+## Switch between pane `ALT+ARROW`
 Use the right arrow to go the right pane for example. 
 
 
-## Configuring the Terminal
+# Configuring the Terminal
 
 In the `Settings` page of Windows Terminal
 
@@ -60,22 +38,16 @@ In the `Settings` page of Windows Terminal
 
 2. Use the `Open JSON file` button at the bottom to reorder the profile and put PowerShell as the first one. 
 
-3. Downlaod and install a Nerd Font. This is a font that include many built-in icon. Download the CaskaydiaMono Nerd Font at 
+3. Downlaod and install a Nerd Font. This is a font that include many built-in icon and ligature. Download the CaskaydiaMono Nerd Font at 
 
-	<https://www.nerdfonts.com/font-downloads>
+	[CaskaydiaCove Nerd Font](<https://www.nerdfonts.com/font-downloads>)
 
-	THERE IS NOW AN OFFICIAL VERSION at 
-
-	<https://github.com/microsoft/cascadia-code>
-
-	There is also CaskaydiaCove with ligatures that allow to merge caracter like `=>` to an arrow but I don't like that.
-
-	In the downloaded zip file, install all the one named `CaskaydiaMonoNerdFont-[Regular|Bold|...].ttf`. Don't use the one with `NerdFontMono` or `NerdFontPropo` in the name. Install all the different wight (regular, bold, ...).
+	[Cascadia Code](<https://github.com/microsoft/cascadia-code>)
 
 3. In the `Defaults` profile, go to `Appearance`
 
 	- Color scheme : Campbell
-	- Font face : CaskaydiaMono Nerd Font (default font face is Cascadia Mono)
+	- Font face : CaskaydiaCove or Cascadia Code (default font face is Cascadia Mono)
 	- Font size : 11 (default is 12)
 
 4. Oh My Posh
