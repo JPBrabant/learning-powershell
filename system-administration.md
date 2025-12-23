@@ -11,7 +11,7 @@ Get-ScheduledTask -TaskPath "\MyTaskFolder\"
 ```pwsh
 $action = New-ScheduledTaskAction `
             -Execute "pwsh" `
-            -Argument "-NoProfile -ExecutionPolicy Bypass -File `"C:\dev\script.ps1`""
+            -Argument "-NoProfile -NoExit -NoLogo -ExecutionPolicy Bypass -File `"C:\dev\script.ps1`""
 
 $trigger = New-ScheduledTaskTrigger `
             -Weekly `
@@ -26,7 +26,8 @@ $settings = New-ScheduledTaskSettingsSet `
                 -DontStopIfGoingOnBatteries `
                 -StartWhenAvailable `
                 -RunOnlyIfNetworkAvailable: $false `
-                -DontStopOnIdleEnd
+                -DontStopOnIdleEnd `
+                -Compatibility Win8
 
 Register-ScheduledTask `
     -TaskName "Name" `
