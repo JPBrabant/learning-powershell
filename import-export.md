@@ -25,11 +25,41 @@ Test-Json
 # Parquet
 
 ```pwsh
-Install-Module PSParquet
+Install-Module -Name PSParquet -Scope CurrentUser
 
-Import-Parquet -Path "path/to/file.parquet"
+Import-Module PSParquet
 
-Export-Parquet -InputObject $data -Path "path/to/file.parquet"
+Import-Parquet -Path ".\file.parquet"
+
+Export-Parquet -InputObject $data -Path ".\file.parquet"
 ```
 
 # Xml
+
+## Generic Xml document
+
+```pwsh
+[xml]$xmlDoc = Get-Content -Path ".\file.xml"
+
+# Access the root element and its children using dot notation
+$xmlDoc.Configuration.Settings.Item
+```
+
+## PowerShell object saved as Xml
+
+```pwsh
+Get-Process | Export-Clixml -Path .\process.xml
+$processes = Import-Clixml -Path .\process.xml
+```
+
+# Excel
+
+```pwsh
+Install-Module -Name ImportExcel -Scope CurrentUser
+
+Import-Module ImportExcel
+
+Import-Excel -Path ".\file.xlsx" -WorksheetName "SalesData"
+
+Export-Excel -Path ".\file.xlsx"
+```
