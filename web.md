@@ -1,9 +1,11 @@
 # General web request
 
 ```pwsh
-Invoke-WebRequest
-iwr
+Invoke-WebRequest -Uri "http://google.com"
+iwr "http://google.com"
 ```
+
+This command does not allow you to easily parse the HTML back. 
 
 # REST
 

@@ -35,7 +35,7 @@ Get-Help about_Automatic_Variables
 - `$env:HOMEDRIVE`                      — Drive letter of the user's home directory
 - `$env:HOMEPATH`                       — Path of the user's home directory
 - `$env:APPDATA`                        — Application data folder
-- `$env:ProgramFiles`                   — Program Files directory
+- `$env:ProgramFiles`                   — Program Files directory (64 bits)
 - `$env:windir` or `$env:SystemRoot`    — Windows directory
 
 You can find out more with

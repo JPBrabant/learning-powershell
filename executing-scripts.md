@@ -1,15 +1,18 @@
 # Executing a script from within PowerShell
 
 ```pwsh
-. .\script.ps1 # Dot sourcing
+. .\script.ps1 # Dot sourcing, load and run a script in the current PowerShell session (share variables)
 
-& .\script.ps1 # Call operator
+& .\script.ps1 # Call operator, ONLY send variables in a child process
 
-Invoke-Command
+Start-Process pwsh -ArgumentList '-File .\script.ps1' # Start a new process
+
+Invoke-Expression "Get-Process | Where-Object CPU -gt 100" # Execute a string
+iex
+
+Invoke-Command -ScriptBlock { Get-Process }
 icm
 
-Invoke-Expression
-iex
 ```
 
 # Executing a script from `cmd.exe`

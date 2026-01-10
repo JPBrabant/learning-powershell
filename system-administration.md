@@ -38,10 +38,10 @@ Register-ScheduledTask `
     -Settings $settings
 ```
 
-# Process
-
 # Services
 
-# Permissions
-
 # Event logs
+
+# Process
+
+# Permissions
