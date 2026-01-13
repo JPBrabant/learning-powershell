@@ -5,8 +5,6 @@
 
 & .\script.ps1 # Call operator, ONLY send variables in a child process
 
-Start-Process pwsh -ArgumentList '-File .\script.ps1' # Start a new process
-
 Invoke-Expression "Get-Process | Where-Object CPU -gt 100" # Execute a string
 iex
 
@@ -74,7 +72,7 @@ Execute a script file. This argument must be last because everything after it is
 Execute a PowerShell command. This argument must be last because everything after it is passed as arguments to the command.
 
 ```cmd
-pwsh -Command "Get-Process | Where-Object {$_.Memory -gt 100MB}"
+pwsh -Command "Get-Process | Where-Object { $_.Memory -gt 100MB }"
 ```
 
 ### `-Verbose`

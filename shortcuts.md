@@ -26,6 +26,7 @@ code C:\dev
 sl - # Go to previous directory
 ```
 
+
 ## Windows Terminal shortcut
 
 ### Auto complete `TAB`

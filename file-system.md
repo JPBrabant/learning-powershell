@@ -41,6 +41,7 @@ cp
 ```pwsh
 Get-Content
 cat
+gc
 
 Set-Content
 ```

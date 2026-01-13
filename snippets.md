@@ -14,6 +14,13 @@ Stop script exepction when an error occur. Put this line at the begining of your
 $ErrorActionPreference = "Stop"
 ```
 
+# Searching for string
+
+```pwsh
+Get-Help Get-Alias | Out-String | Select-String "word" -AllMatches # One string on multiple line
+Get-Help Get-Alias | Out-String -Stream | Select-String "word" # Each line in a string array
+```
+
 # Importing modules
 
 ```pwsh
