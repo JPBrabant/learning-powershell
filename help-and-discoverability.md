@@ -51,10 +51,18 @@ Get-Alias -Name gcm # The command linked to the alias gcm
 gal gcm
 ```
 
-# Member
+# Members and properties values
 
 ```pwsh
-Get-Member
+# List members
+(gci)[0] | Get-Member
+(gci)[0] | Get-Member -MemberType Property | Sort-Object -Property Name
+```
+
+```pwsh
+# See members values
+Get-Process | Select-Object -First 1 -Property *
+(gci)[0] | select *
 ```
 
 # Type
