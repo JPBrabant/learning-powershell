@@ -20,9 +20,7 @@ powershell -Command "$PSVersionTable"
 
 Install or update to the latest version of PowerShell Core using winget. Stick to the official release (not the Preview versions, which don't support the `pwsh` command for script execution).
 
-```cmd
-winget (install|update) --exact --id Microsoft.PowerShell
-```
+See instructions in my setup-pc repo.
 
 # Configuring the Terminal
 
