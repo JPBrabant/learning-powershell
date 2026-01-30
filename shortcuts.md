@@ -40,11 +40,14 @@ sl - # Go to previous directory
 ### Show command Help `F1`
 Placing the cursor at the end of a full command name will open the Full Help page in a different buffer.
 
-### Show command Help `F8`
-Cycle history
+### Cycle through all command history `Up/Down`
+Navigate through your entire command history sequentially. Up arrow shows previous commands, down arrow shows more recent ones, regardless of what's currently typed in the prompt.
 
-### Show command Help `CTRL+R`
-Start a search command, type some letters and it will do a fuzzy match for a command in your history.
+### Search history with filter `F8`
+Search backward through your command history, but only show commands that begin with what you've already typed. For example, if you type `Get-` and press F8, only `Get-*` commands will be shown.
+
+### Fuzzy search command history `CTRL+R`
+Start an interactive search mode where you can type letters to perform a fuzzy match against your command history. This finds commands containing your search term anywhere in the command, not just at the beginning. Press `CTRL+R` to go backward and `CTRL+S` to go foward.
 
 ### Focused parameter help `ALT+H`
 Placing the cursor at the end of a parameter, this command will show you help about this parameter. 
