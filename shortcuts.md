@@ -43,6 +43,9 @@ Placing the cursor at the end of a full command name will open the Full Help pag
 ### Show command Help `F8`
 Cycle history
 
+### Show command Help `CTRL+R`
+Start a search command, type some letters and it will do a fuzzy match for a command in your history.
+
 ### Focused parameter help `ALT+H`
 Placing the cursor at the end of a parameter, this command will show you help about this parameter. 
 
