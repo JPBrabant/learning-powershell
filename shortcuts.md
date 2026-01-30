@@ -49,6 +49,9 @@ Search backward through your command history, but only show commands that begin 
 ### Fuzzy search command history `CTRL+R`
 Start an interactive search mode where you can type letters to perform a fuzzy match against your command history. This finds commands containing your search term anywhere in the command, not just at the beginning. Press `CTRL+R` to go backward and `CTRL+S` to go foward.
 
+### Search history with `# + keyword + Tab`
+Type a hash followed by a keyword, then press `Tab` to cycle through command history that contains that keyword. This performs a fuzzy search across your history for commands matching that term. 
+
 ### Focused parameter help `ALT+H`
 Placing the cursor at the end of a parameter, this command will show you help about this parameter. 
 
