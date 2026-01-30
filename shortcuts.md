@@ -40,6 +40,9 @@ sl - # Go to previous directory
 ### Show command Help `F1`
 Placing the cursor at the end of a full command name will open the Full Help page in a different buffer.
 
+### Show command Help `F8`
+Cycle history
+
 ### Focused parameter help `ALT+H`
 Placing the cursor at the end of a parameter, this command will show you help about this parameter. 
 
