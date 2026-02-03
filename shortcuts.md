@@ -44,7 +44,7 @@ Placing the cursor at the end of a full command name will open the Full Help pag
 Navigate through your entire command history sequentially. Up arrow shows previous commands, down arrow shows more recent ones, regardless of what's currently typed in the prompt.
 
 ### Search history with filter `F8`
-Search backward through your command history, but only show commands that begin with what you've already typed. For example, if you type `Get-` and press F8, only `Get-*` commands will be shown.
+Search backward through your command history, but only show commands that begin with what you've already typed. For example, if you type `Get-` and press `F8`, only `Get-*` commands will be shown. `Shift+F8` to search forward.
 
 ### Fuzzy search command history `CTRL+R`
 Start an interactive search mode where you can type letters to perform a fuzzy match against your command history. This finds commands containing your search term anywhere in the command, not just at the beginning. Press `CTRL+R` to go backward and `CTRL+S` to go foward.
@@ -63,9 +63,11 @@ Move the cursor to the next value of a parameter.
 ### Command palete `CTRL+SHIFT+P`
 
 ### Duplicate pane `ALT+SHIFT+D`
-Open a new pane with the current profile (pwsh) on the right.
+Open a new pane with the current profile on the right.
 
 ### Close pane `CTRL+SHIT+W`
 
 ### Switch between pane `ALT+ARROW`
 Use the right arrow to go the right pane for example. 
+
+### Clear screen `CTRL+L`
