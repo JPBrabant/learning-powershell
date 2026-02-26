@@ -45,3 +45,7 @@ Register-ScheduledTask `
 # Process
 
 # Permissions
+
+# Environment variables
+
+TODO : Create and manage environment variables

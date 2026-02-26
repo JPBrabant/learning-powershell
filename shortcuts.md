@@ -71,3 +71,5 @@ Open a new pane with the current profile on the right.
 Use the right arrow to go the right pane for example. 
 
 ### Clear screen `CTRL+L`
+
+### Clear line `CTRL+Home`
