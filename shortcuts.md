@@ -73,3 +73,5 @@ Use the right arrow to go the right pane for example.
 ### Clear screen `CTRL+L`
 
 ### Clear line `CTRL+Home`
+
+### Scroll up or down `CTRL+SHIFT+Up/Down`
